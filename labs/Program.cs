@@ -50,8 +50,22 @@ namespace labs
                     Console.WriteLine("Неверный ввод, повторите попытку!");
                 }
                 bankAccount2.WithDrow(summ2, bankAccount2);
-
+                bankAccount2.Dispose();
             }
+
+            Console.WriteLine("Песни");
+            int countSongs = 4;
+            List<Songs> songs = new List<Songs>();
+            for (int i = 0; i < countSongs; i++)
+            {
+                Console.WriteLine("Введите название песни");
+                string name = Console.ReadLine();
+                Console.WriteLine("Введите название артиста");
+                string author = Console.ReadLine();
+                songs.Add(new Songs(name, author));
+            }
+            Songs.Search(songs);
+            Console.ReadKey();
         }
     }
 }

@@ -84,5 +84,18 @@ namespace labs
             }
             return balance;
         }
+        public void Dispose()
+        {
+            StreamWriter addValue = File.AppendText("Transactions.txt");
+            addValue.WriteLine("id аккаунта "+ number);
+            addValue.WriteLine("Баланс на счету:" +balance);
+            addValue.WriteLine("Тип счета" +accountType);
+            foreach (BankTransaction tran in tranQueue)
+            {
+                    addValue.WriteLine($"Время: {DateTime.Now}.  Сумма перевода: {tran.Summa()}");
+            }
+            addValue.Close();
+            GC.SuppressFinalize(this);
+        }
     }
 }
